@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { A11yModule } from '@angular/cdk/a11y';
 
@@ -17,6 +23,13 @@ export class ModalComponent {
   @Output() mudouModal = new EventEmitter<boolean>();
 
   constructor() {}
+
+  //Escuta o evento no dom para fecharmos o modal também com o ESC
+  @HostListener('document:keydown.escape') fecharModalAoPressionarEsc() {
+    if (this.statusModal) {
+      this.fecharModal();
+    }
+  }
 
   fecharModal() {
     this.statusModal = false;
