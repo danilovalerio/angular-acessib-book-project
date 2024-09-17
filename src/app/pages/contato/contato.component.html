@@ -30,6 +30,7 @@
       <div class="campo-form">
         <label for="email">E-mail</label>
         <input
+          aria-label="endereço de e-mail"
           aria-describedby="email-erro-email email-erro-required"
           [attr.aria-invalid]="contatoForm.get('email')?.invalid"
           type="email"
